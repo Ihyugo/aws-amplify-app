@@ -3,6 +3,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import CustomizedInputBase from './SearchTextField';
 
 // interface TabPanelProps {
 //   children?: React.ReactNode;
@@ -54,12 +55,17 @@ export default function BasicTabs({ value, setValue }) {
       <TabPanel value={value} index={0}>
         Windowsのショートカットキー一覧
       </TabPanel>
+      {value === 0 && <CustomizedInputBase title={'Windowsのショートカットキー一覧'} />}
+
       <TabPanel value={value} index={1}>
         Wordのショートカットキー一覧
       </TabPanel>
+      {value === 1 && <CustomizedInputBase title={'Wordのショートカットキー一覧'} />}
+
       <TabPanel value={value} index={2}>
         Excelのショートカットキー一覧
       </TabPanel>
+      {value === 2 && <CustomizedInputBase title={'Excelのショートカットキー一覧'} />}
     </Box>
   );
 }

@@ -48,8 +48,56 @@ function tableDataCreate(num) {
   return resData;
 }
 
+function allTableData(text) {
+  const resData = [];
+  exportFunction.copy_and_paste().forEach((key, index) => {
+    if (key[1].match(text)) {
+      resData.push(createTableData(index, key[0], key[1]));
+    }
+  });
+  exportFunction.win_log_short().forEach((key, index) => {
+    if (key[1].match(text)) {
+      resData.push(createTableData(index, key[0], key[1]));
+    }
+  });
+  exportFunction.cmd_key_short().forEach((key, index) => {
+    if (key[1].match(text)) {
+      resData.push(createTableData(index, key[0], key[1]));
+    }
+  });
+  exportFunction.dialog_short().forEach((key, index) => {
+    if (key[1].match(text)) {
+      resData.push(createTableData(index, key[0], key[1]));
+    }
+  });
+  exportFunction.exp_short().forEach((key, index) => {
+    if (key[1].match(text)) {
+      resData.push(createTableData(index, key[0], key[1]));
+    }
+  });
+  exportFunction.virtual_short().forEach((key, index) => {
+    if (key[1].match(text)) {
+      resData.push(createTableData(index, key[0], key[1]));
+    }
+  });
+  exportFunction.task_short().forEach((key, index) => {
+    if (key[1].match(text)) {
+      resData.push(createTableData(index, key[0], key[1]));
+    }
+  });
+  exportFunction.setting_short().forEach((key, index) => {
+    if (key[1].match(text)) {
+      resData.push(createTableData(index, key[0], key[1]));
+    }
+  });
+  return resData;
+}
+
 export default function SmallTabs({ value }) {
-  const [smallTab, setSmallTab] = React.useState([0, tableDataCreate(0)]);
+  // const text = 'コマンド';
+  const text = null;
+  const resData = text ? allTableData(text) : tableDataCreate(0);
+  const [smallTab, setSmallTab] = React.useState([0, resData]);
   console.log(smallTab);
   const handleChange = (event, newValue) => {
     setSmallTab([newValue, tableDataCreate(newValue)]);
@@ -78,35 +126,38 @@ export default function SmallTabs({ value }) {
                   bgcolor: 'background.paper',
                 }}
               >
-                <Tabs
-                  value={smallTab[0]}
-                  onChange={handleChange}
-                  variant="scrollable"
-                  scrollButtons
-                  aria-label="visible arrows tabs example"
-                  sx={{
-                    [`& .${tabsClasses.scrollButtons}`]: {
-                      '&.Mui-disabled': { opacity: 0.3 },
-                    },
-                  }}
-                >
-                  {shortCutKind.forEach((value, index) => {
-                    console.log(value, index);
-                    return (
-                      <>
-                        <Tab label={value} />
-                      </>
-                    );
-                  })}
-                  <Tab label="コピー、貼り付け、その他の一般的なキーボード ショートカット" />
-                  <Tab label="Windows ロゴ キーのキーボード ショートカット" />
-                  <Tab label="コマンド プロンプトのキーボード ショートカット" />
-                  <Tab label="ダイアログ ボックスのキーボード ショートカット" />
-                  <Tab label="エクスプローラーのキーボード ショートカット" />
-                  <Tab label="仮想デスクトップのキーボード ショートカット" />
-                  <Tab label="タスク バーのキーボード ショートカット" />
-                  <Tab label="設定のキーボード ショートカット" />
-                </Tabs>
+                {text === null && (
+                  <>
+                    <Tabs
+                      value={smallTab[0]}
+                      onChange={handleChange}
+                      variant="scrollable"
+                      scrollButtons
+                      aria-label="visible arrows tabs example"
+                      sx={{
+                        [`& .${tabsClasses.scrollButtons}`]: {
+                          '&.Mui-disabled': { opacity: 0.3 },
+                        },
+                      }}
+                    >
+                      {shortCutKind.forEach((value, index) => {
+                        return (
+                          <>
+                            <Tab label={value} />
+                          </>
+                        );
+                      })}
+                      <Tab label="コピー、貼り付け、その他の一般的なキーボード ショートカット" />
+                      <Tab label="Windows ロゴ キーのキーボード ショートカット" />
+                      <Tab label="コマンド プロンプトのキーボード ショートカット" />
+                      <Tab label="ダイアログ ボックスのキーボード ショートカット" />
+                      <Tab label="エクスプローラーのキーボード ショートカット" />
+                      <Tab label="仮想デスクトップのキーボード ショートカット" />
+                      <Tab label="タスク バーのキーボード ショートカット" />
+                      <Tab label="設定のキーボード ショートカット" />
+                    </Tabs>
+                  </>
+                )}
               </Box>
               <div>
                 <BasicTable tableData={smallTab[1]} />

@@ -12,6 +12,7 @@ function App() {
         <header className="App-header"></header>
         <div className="container">
           <BasicTabs value={value} setValue={setValue} />
+          <br />
           <div className="table-board">
             <SmallTabs value={value} />
           </div>
