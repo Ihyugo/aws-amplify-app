@@ -1,4 +1,4 @@
-exports.copy_and_paste = function () {
+exports.copyAndPaste = function () {
   const copy_and_paste = [
     ['Ctrl + X', '選択した項目を切り取る。'],
     ['Ctrl + C (または Ctrl + Insert)', '選択した項目をコピーする。'],
@@ -73,8 +73,8 @@ exports.copy_and_paste = function () {
   return copy_and_paste;
 };
 
-exports.win_log_short = function () {
-  const win_log_short = [
+exports.winLogShort = function () {
+  const winLog_short = [
     ['Windows ロゴ キー ', 'スタートメニューを開くまたは閉じる。'],
     ['Windows ロゴ キー  + A', 'クイック設定を開く。Windows 11 で更新されました。'],
     ['Windows ロゴ キー  + B', 'タスクバーの隅にある最初のアイコンにフォーカスを設定します。'],
@@ -196,10 +196,10 @@ exports.win_log_short = function () {
     ],
   ];
 
-  return win_log_short;
+  return winLog_short;
 };
 
-exports.cmd_key_short = function () {
+exports.cmdKeyShort = function () {
   const cmd_key_short = [
     ['Ctrl + C (または Ctrl + Insert)', '選択したテキストをコピーする。'],
     ['Ctrl + V (または Shift + Insert)', '選択したテキストを貼り付ける。'],
@@ -224,7 +224,7 @@ exports.cmd_key_short = function () {
   return cmd_key_short;
 };
 
-exports.dialog_short = function () {
+exports.dialogShort = function () {
   const dialog_short = [
     ['F4', 'アクティブな一覧内の各項目を表示する。'],
     ['Ctrl + Tab', '前方のタブへ移動する。'],

@@ -17,11 +17,8 @@ export default function CustomizedInputBase({ title, setText }) {
           placeholder={title}
           inputProps={{ 'aria-label': 'search google maps' }}
           onChange={(e) => {
-            let new_input = e.target.value;
-            if (new_input == '') {
-              new_input = null;
-            }
-            setText(e.target.value);
+            const newInput = e.target.value == '' ? null : e.target.value;
+            setText(newInput);
           }}
         />
         <IconButton type="button" sx={{ p: '10px' }} aria-label="search">

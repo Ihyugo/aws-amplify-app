@@ -13,19 +13,19 @@ function createTableData(index, key, value) {
 function tableDataCreate(num) {
   const resData = [];
   if (num === 0) {
-    exportFunction.copy_and_paste().forEach((key, index) => {
+    exportFunction.copyAndPaste().forEach((key, index) => {
       resData.push(createTableData(index, key[0], key[1]));
     });
   } else if (num === 1) {
-    exportFunction.win_log_short().forEach((key, index) => {
+    exportFunction.winLogShort().forEach((key, index) => {
       resData.push(createTableData(index, key[0], key[1]));
     });
   } else if (num === 2) {
-    exportFunction.cmd_key_short().forEach((key, index) => {
+    exportFunction.cmdKeyShort().forEach((key, index) => {
       resData.push(createTableData(index, key[0], key[1]));
     });
   } else if (num === 3) {
-    exportFunction.dialog_short().forEach((key, index) => {
+    exportFunction.dialogShort().forEach((key, index) => {
       resData.push(createTableData(index, key[0], key[1]));
     });
   } else if (num === 4) {
@@ -50,22 +50,22 @@ function tableDataCreate(num) {
 
 function allTableData(text) {
   const resData = [];
-  exportFunction.copy_and_paste().forEach((key, index) => {
+  exportFunction.copyAndPaste().forEach((key, index) => {
     if (key[1].match(text)) {
       resData.push(createTableData(index, key[0], key[1]));
     }
   });
-  exportFunction.win_log_short().forEach((key, index) => {
+  exportFunction.winLogShort().forEach((key, index) => {
     if (key[1].match(text)) {
       resData.push(createTableData(index, key[0], key[1]));
     }
   });
-  exportFunction.cmd_key_short().forEach((key, index) => {
+  exportFunction.cmdKeyShort().forEach((key, index) => {
     if (key[1].match(text)) {
       resData.push(createTableData(index, key[0], key[1]));
     }
   });
-  exportFunction.dialog_short().forEach((key, index) => {
+  exportFunction.dialogShort().forEach((key, index) => {
     if (key[1].match(text)) {
       resData.push(createTableData(index, key[0], key[1]));
     }
@@ -94,7 +94,6 @@ function allTableData(text) {
 }
 
 export default function SmallTabs(props) {
-  const value = props.value;
   const resData = props.text ? allTableData(props.ext) : tableDataCreate(0);
   const [smallTab, setSmallTab] = React.useState(resData);
   const [tabSelect, setTabSelect] = React.useState(0);
@@ -111,21 +110,10 @@ export default function SmallTabs(props) {
     }
   }, [props.text]);
 
-  const shortCutKind = [
-    'コピー、貼り付け、その他の一般的なキーボード ショートカット',
-    'Windows ロゴ キーのキーボード ショートカット',
-    'コマンド プロンプトのキーボード ショートカット',
-    'ダイアログ ボックスのキーボード ショートカット',
-    'エクスプローラーのキーボード ショートカット',
-    '仮想デスクトップのキーボード ショートカット',
-    'タスク バーのキーボード ショートカット',
-    '設定のキーボード ショートカット',
-  ];
-
   return (
     <>
       {(() => {
-        if (value === 0) {
+        if (props.value === 0) {
           return (
             <>
               <Box
@@ -149,13 +137,6 @@ export default function SmallTabs(props) {
                         },
                       }}
                     >
-                      {shortCutKind.forEach((value, index) => {
-                        return (
-                          <>
-                            <Tab label={value} />
-                          </>
-                        );
-                      })}
                       <Tab label="コピー、貼り付け、その他の一般的なキーボード ショートカット" />
                       <Tab label="Windows ロゴ キーのキーボード ショートカット" />
                       <Tab label="コマンド プロンプトのキーボード ショートカット" />
