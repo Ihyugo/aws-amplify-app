@@ -5,7 +5,7 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 
-export default function CustomizedInputBase({ title }) {
+export default function CustomizedInputBase({ title, setText }) {
   return (
     <>
       <Paper
@@ -16,6 +16,13 @@ export default function CustomizedInputBase({ title }) {
           sx={{ ml: 1, flex: 1 }}
           placeholder={title}
           inputProps={{ 'aria-label': 'search google maps' }}
+          onChange={(e) => {
+            let new_input = e.target.value;
+            if (new_input == '') {
+              new_input = null;
+            }
+            setText(e.target.value);
+          }}
         />
         <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
           <SearchIcon />

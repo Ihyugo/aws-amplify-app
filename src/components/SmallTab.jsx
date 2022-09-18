@@ -93,15 +93,24 @@ function allTableData(text) {
   return resData;
 }
 
-export default function SmallTabs({ value }) {
-  // const text = 'コマンド';
-  const text = null;
-  const resData = text ? allTableData(text) : tableDataCreate(0);
-  const [smallTab, setSmallTab] = React.useState([0, resData]);
-  console.log(smallTab);
+export default function SmallTabs(props) {
+  const value = props.value;
+  const resData = props.text ? allTableData(props.ext) : tableDataCreate(0);
+  const [smallTab, setSmallTab] = React.useState(resData);
+  const [tabSelect, setTabSelect] = React.useState(0);
   const handleChange = (event, newValue) => {
-    setSmallTab([newValue, tableDataCreate(newValue)]);
+    setSmallTab(tableDataCreate(newValue));
+    setTabSelect(newValue);
   };
+
+  React.useEffect(() => {
+    if (props.text !== null) {
+      setSmallTab(allTableData(props.text));
+    } else {
+      setSmallTab(tableDataCreate(tabSelect));
+    }
+  }, [props.text]);
+
   const shortCutKind = [
     'コピー、貼り付け、その他の一般的なキーボード ショートカット',
     'Windows ロゴ キーのキーボード ショートカット',
@@ -126,10 +135,10 @@ export default function SmallTabs({ value }) {
                   bgcolor: 'background.paper',
                 }}
               >
-                {text === null && (
+                {props.text == null && (
                   <>
                     <Tabs
-                      value={smallTab[0]}
+                      value={tabSelect}
                       onChange={handleChange}
                       variant="scrollable"
                       scrollButtons
@@ -160,7 +169,7 @@ export default function SmallTabs({ value }) {
                 )}
               </Box>
               <div>
-                <BasicTable tableData={smallTab[1]} />
+                <BasicTable tableData={smallTab} />
               </div>
             </>
           );

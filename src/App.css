@@ -47,3 +47,8 @@
 .table-board {
   background-color: white;
 }
+
+.index-search-area{
+  display: flex;
+  justify-content:center;
+}

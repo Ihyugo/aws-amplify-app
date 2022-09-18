@@ -38,7 +38,7 @@ function a11yProps(index) {
   };
 }
 
-export default function BasicTabs({ value, setValue }) {
+export default function BasicTabs({ value, setValue, setText }) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -52,20 +52,26 @@ export default function BasicTabs({ value, setValue }) {
           <Tab label="Excel" {...a11yProps(2)} />
         </Tabs>
       </Box>
-      <TabPanel value={value} index={0}>
-        Windowsのショートカットキー一覧
-      </TabPanel>
-      {value === 0 && <CustomizedInputBase title={'Windowsのショートカットキー一覧'} />}
+      {value === 0 && (
+        <div className="index-search-area">
+          <h3>Windowsのショートカットキー一覧</h3>
+          <CustomizedInputBase title={'Windowsのショートカットキー一覧'} setText={setText} />
+        </div>
+      )}
 
-      <TabPanel value={value} index={1}>
-        Wordのショートカットキー一覧
-      </TabPanel>
-      {value === 1 && <CustomizedInputBase title={'Wordのショートカットキー一覧'} />}
+      {value === 1 && (
+        <div className="index-search-area">
+          <h3>Wordのショートカットキー一覧</h3>
+          <CustomizedInputBase title={'Wordのショートカットキー一覧'} setText={setText} />
+        </div>
+      )}
 
-      <TabPanel value={value} index={2}>
-        Excelのショートカットキー一覧
-      </TabPanel>
-      {value === 2 && <CustomizedInputBase title={'Excelのショートカットキー一覧'} />}
+      {value === 2 && (
+        <div className="index-search-area">
+          <h3>Excelのショートカットキー一覧</h3>
+          <CustomizedInputBase title={'Excelのショートカットキー一覧'} setText={setText} />
+        </div>
+      )}
     </Box>
   );
 }
