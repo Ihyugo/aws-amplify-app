@@ -14,13 +14,17 @@ export default function BasicTable({ tableData }) {
         <TableHead>
           <TableRow>
             <TableCell>ID</TableCell>
+            <TableCell>command ID</TableCell>
             <TableCell>キー</TableCell>
             <TableCell align="center">挙動</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {tableData.map((row) => (
-            <TableRow key={row.index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+          {tableData.map((row, i) => (
+            <TableRow key={i} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+              <TableCell component="th" scope="row">
+                {i}
+              </TableCell>
               <TableCell component="th" scope="row">
                 {row.index}
               </TableCell>

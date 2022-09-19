@@ -1,0 +1,31 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommended",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "prettier"
+  ],
+  "overrides": [],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react", "prettier", "testing-library"],
+  "rules": {
+    "prettier/prettier": "error",
+    "require-jsdoc": 0,
+    "react/prop-types": "off"
+
+  }
+}
