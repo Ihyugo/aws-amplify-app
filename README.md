@@ -76,3 +76,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 # aws-amplify-app
 
 # aws-amplify-app
+
+### npm
+
+npm version == 8.19.2
+node version == v16.17.0
