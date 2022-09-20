@@ -108,7 +108,7 @@ export default function SmallTabs(props) {
     } else {
       setSmallTab(tableDataCreate(tabSelect));
     }
-  }, [props.text]);
+  }, [props.text, tabSelect]);
 
   return (
     <>
